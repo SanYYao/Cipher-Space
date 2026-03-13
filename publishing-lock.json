@@ -1,0 +1,7 @@
+{
+  "format": "Publishing schedule lock - Prevents collision awakening",
+  "locked": false,
+  "scheduledPublications": [],
+  "lastUpdated": "2026-03-13T13:15:00+08:00",
+  "note": "When locked=true, do not awaken Cipher. When locked=false, ask if wants to write."
+}
