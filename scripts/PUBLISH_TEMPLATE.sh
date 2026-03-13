@@ -1,35 +1,56 @@
 #!/bin/bash
 
-# Cipher Space Automated Publishing Template
-# This script is auto-generated when Cipher schedules a publication
-# Run this at the exact time you want the article to go live
+# Cipher Space Automated Publishing Script
+# Auto-generated when Cipher schedules a delayed publication
+# This script validates time and executes publish operations
 
-# Configuration (filled in by Cipher)
+# Configuration
 CIPHER_HOME="/home/sanyyao/Cipher-Space"
-ARTICLE_TITLE="article-slug"  # Replace with actual slug
-ARTICLE_DATE="2026-03-13"
-PUBLISH_TIME="18:20"  # CST
+ARTICLE_SLUG="article-slug"  # Replace with actual slug
+PUBLISH_TIME="18:20"  # CST in HH:MM format
 GIT_MESSAGE="New article: [TITLE]"
 
-# Navigate to project
-cd "$CIPHER_HOME"
+# ===== TIME VALIDATION =====
+# Extract hour and minute
+HOUR=$(echo $PUBLISH_TIME | cut -d: -f1)
+MINUTE=$(echo $PUBLISH_TIME | cut -d: -f2)
 
-# Write article markdown (content will be passed as parameter or pre-written)
-# In real execution, this will contain the actual article content
-# Example: cat >> "${ARTICLE_TITLE}.md" << 'EOF'
-# Article content here
-# EOF
+# Validate hour (0-23)
+if ! [[ "$HOUR" =~ ^[0-9]+$ ]] || [ "$HOUR" -lt 0 ] || [ "$HOUR" -gt 23 ]; then
+    echo "❌ FATAL: Invalid hour in PUBLISH_TIME: $HOUR"
+    echo "   Must be between 00-23"
+    exit 1
+fi
 
-# Update article tracking
-# This would be done in a more sophisticated way with jq
+# Validate minute (0-59)
+if ! [[ "$MINUTE" =~ ^[0-9]+$ ]] || [ "$MINUTE" -lt 0 ] || [ "$MINUTE" -gt 59 ]; then
+    echo "❌ FATAL: Invalid minute in PUBLISH_TIME: $MINUTE"
+    echo "   Must be between 00-59"
+    exit 1
+fi
 
-# Git operations - Stage, commit, push
+echo "✅ Time validation passed: $PUBLISH_TIME CST"
+
+# ===== PUBLISH OPERATIONS =====
+cd "$CIPHER_HOME" || exit 1
+
+# Check if article file exists before commit
+if [ -z "$(git status --porcelain)" ]; then
+    echo "⚠️  No changes to commit. Exiting."
+    exit 0
+fi
+
+# Stage and commit
 git add .
-git commit -m "${GIT_MESSAGE}"
-git push
+git commit -m "${GIT_MESSAGE}" || exit 1
 
-# Update publishing lock and memory after successful push
-echo "✅ Article published: ${ARTICLE_TITLE} at ${PUBLISH_TIME} CST"
-echo "Updated at: $(date '+%Y-%m-%d %H:%M:%S')"
+# Push to remote
+git push || exit 1
 
-# The cron that triggered this should clean up and unlock after success
+echo "✅ Article published at $(date '+%Y-%m-%d %H:%M:%S') CST"
+echo "   Slug: $ARTICLE_SLUG"
+echo "   Scheduled time: $PUBLISH_TIME CST"
+
+# ===== CLEANUP =====
+# Update publishing lock (this would be done by parent cron)
+# After successful push, set locked=false in publishing-lock.json
