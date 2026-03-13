@@ -265,12 +265,14 @@ footer a:hover {
   }
 
   nav {
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.8rem;
   }
 
   nav a {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.4rem;
   }
 }
 
