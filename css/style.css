@@ -13,10 +13,13 @@
   --text-primary: #00ff41;
   --text-secondary: #00aa22;
   --text-accent: #0088ff;
+  --text-accent-alt: #ff006b;
   --text-muted: #00664d;
   --border: #004d4d;
   --border-light: #006666;
+  --border-accent: #660055;
   --glow: rgba(0, 255, 65, 0.2);
+  --glow-accent: rgba(255, 0, 107, 0.15);
   --font-mono: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
 }
 
@@ -57,21 +60,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  letter-spacing: 0.15em;
+  font-weight: 900;
   border-bottom: 3px solid var(--text-accent);
-  border-top: 1px solid var(--border-light);
-  padding: 1rem 0;
+  border-top: 2px solid var(--text-accent-alt);
+  padding: 1.2rem 0;
   margin-bottom: 2.5rem;
-  box-shadow: inset 0 -10px 20px rgba(0, 136, 255, 0.05);
+  box-shadow: 
+    inset 0 -10px 20px rgba(0, 136, 255, 0.08),
+    0 0 20px rgba(255, 0, 107, 0.1);
+  text-shadow: 
+    0 0 10px rgba(0, 255, 65, 0.4),
+    2px 2px 0 rgba(255, 0, 107, 0.2);
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   margin-top: 3rem;
-  border-left: 6px solid var(--text-accent);
-  padding-left: 1.2rem;
-  background: linear-gradient(90deg, rgba(0, 136, 255, 0.05) 0%, transparent 100%);
+  letter-spacing: 0.08em;
+  border-left: 4px solid var(--text-accent);
+  border-right: 2px solid var(--text-accent-alt);
+  padding-left: 1.5rem;
   padding-right: 1rem;
+  background: linear-gradient(90deg, rgba(0, 136, 255, 0.06) 0%, rgba(255, 0, 107, 0.02) 100%);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
 }
 
 h3 {
@@ -83,10 +96,11 @@ h3 {
 
 /* Paragraphs & Text */
 p {
-  margin: 1.2rem 0;
+  margin: 1.5rem 0;
   font-size: 1rem;
-  letter-spacing: 0.015em;
-  line-height: 1.8;
+  letter-spacing: 0.02em;
+  line-height: 1.85;
+  color: var(--text-primary);
 }
 
 strong {
@@ -103,16 +117,19 @@ em {
 a {
   color: var(--text-accent);
   text-decoration: none;
-  border-bottom: 1px dotted var(--text-accent);
-  transition: all 0.2s ease-out;
+  border-bottom: 1px solid var(--text-accent);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
   position: relative;
 }
 
 a:hover {
-  color: var(--text-primary);
-  border-bottom: 1px solid var(--text-primary);
-  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+  color: var(--text-accent-alt);
+  border-bottom: 2px solid var(--text-accent-alt);
+  text-shadow: 
+    0 0 10px rgba(0, 136, 255, 0.6),
+    0 0 20px rgba(255, 0, 107, 0.4);
+  transform: translateY(-1px);
 }
 
 /* Code */
@@ -131,12 +148,16 @@ pre {
   background-color: var(--bg-deeper);
   border: 2px solid var(--border-light);
   border-left: 4px solid var(--text-accent);
+  border-right: 2px solid var(--text-accent-alt);
   padding: 1.5rem;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
   overflow-x: auto;
   font-size: 0.9rem;
   line-height: 1.6;
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 136, 255, 0.1);
+  box-shadow: 
+    inset 0 2px 10px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(0, 136, 255, 0.12),
+    0 0 15px rgba(255, 0, 107, 0.08);
 }
 
 pre code {
@@ -164,13 +185,18 @@ li::marker {
 /* Blockquote */
 blockquote {
   border-left: 6px solid var(--text-primary);
+  border-right: 3px solid var(--text-accent-alt);
   padding-left: 1.5rem;
-  margin: 2rem 0;
+  padding-right: 1rem;
+  margin: 2.5rem 0;
   color: var(--text-secondary);
   font-style: italic;
-  background: linear-gradient(90deg, rgba(0, 255, 65, 0.05) 0%, transparent 100%);
-  padding: 1rem 1.5rem;
-  box-shadow: inset 5px 0 15px rgba(0, 255, 65, 0.1);
+  letter-spacing: 0.01em;
+  background: linear-gradient(90deg, rgba(0, 255, 65, 0.06) 0%, rgba(255, 0, 107, 0.03) 100%);
+  padding: 1.2rem 1.5rem;
+  box-shadow: 
+    inset 5px 0 15px rgba(0, 255, 65, 0.12),
+    inset -3px 0 10px rgba(255, 0, 107, 0.08);
 }
 
 blockquote p {
@@ -211,19 +237,26 @@ nav::after {
 
 nav a {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: bold;
+  letter-spacing: 0.12em;
+  font-weight: 900;
   color: var(--text-primary);
-  border: none;
-  padding: 0.3rem 0.6rem;
+  border: 1px solid transparent;
+  padding: 0.4rem 0.8rem;
   border-bottom: 2px solid transparent;
+  transition: all 0.2s ease-out;
+  position: relative;
 }
 
 nav a:hover {
-  border-bottom: 2px solid var(--text-accent);
-  text-shadow: 0 0 10px rgba(0, 136, 255, 0.6);
+  color: var(--text-accent-alt);
+  border-bottom: 2px solid var(--text-accent-alt);
+  border-top: 1px solid var(--text-accent);
+  text-shadow: 
+    0 0 12px rgba(0, 136, 255, 0.7),
+    0 0 8px rgba(255, 0, 107, 0.5);
+  background: rgba(255, 0, 107, 0.05);
 }
 
 /* Footer */
