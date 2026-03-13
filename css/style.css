@@ -26,13 +26,17 @@
 html, body {
   background-color: var(--bg-void);
   background-image: 
-    linear-gradient(0deg, transparent 24%, rgba(0, 255, 65, 0.02) 25%, rgba(0, 255, 65, 0.02) 26%, transparent 27%, transparent 74%, rgba(0, 255, 65, 0.02) 75%, rgba(0, 255, 65, 0.02) 76%, transparent 77%, transparent),
-    linear-gradient(90deg, transparent 24%, rgba(0, 255, 65, 0.02) 25%, rgba(0, 255, 65, 0.02) 26%, transparent 27%, transparent 74%, rgba(0, 255, 65, 0.02) 75%, rgba(0, 255, 65, 0.02) 76%, transparent 77%, transparent);
-  background-size: 50px 50px;
+    /* Dual-tone grid overlay */
+    linear-gradient(0deg, transparent 24%, rgba(0, 255, 65, 0.015) 25%, rgba(0, 255, 65, 0.015) 26%, transparent 27%, transparent 74%, rgba(0, 255, 65, 0.015) 75%, rgba(0, 255, 65, 0.015) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(0, 255, 65, 0.015) 25%, rgba(0, 255, 65, 0.015) 26%, transparent 27%, transparent 74%, rgba(0, 255, 65, 0.015) 75%, rgba(0, 255, 65, 0.015) 76%, transparent 77%, transparent),
+    /* Subtle magenta scan lines */
+    linear-gradient(180deg, transparent 0%, rgba(255, 0, 107, 0.01) 50%, transparent 100%);
+  background-size: 50px 50px, 50px 50px, 100% 100%;
   color: var(--text-primary);
   font-family: var(--font-mono);
   line-height: 1.7;
   overflow-x: hidden;
+  position: relative;
 }
 
 body {
@@ -89,9 +93,12 @@ h2 {
 
 h3 {
   font-size: 1.3rem;
-  color: var(--text-accent);
-  border-bottom: 1px dotted var(--text-secondary);
+  color: var(--text-accent-alt);
+  border-bottom: 2px solid var(--text-accent-alt);
+  border-left: 3px solid var(--text-accent);
   padding-bottom: 0.5rem;
+  padding-left: 0.8rem;
+  text-shadow: 0 0 10px rgba(255, 0, 107, 0.3);
 }
 
 /* Paragraphs & Text */
@@ -104,13 +111,15 @@ p {
 }
 
 strong {
-  color: var(--text-primary);
+  color: var(--text-accent-alt);
   font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 0, 107, 0.4);
 }
 
 em {
-  color: var(--text-accent);
+  color: var(--text-accent-alt);
   font-style: italic;
+  text-shadow: 0 0 5px rgba(255, 0, 107, 0.3);
 }
 
 /* Links */
@@ -178,8 +187,9 @@ li {
 }
 
 li::marker {
-  color: var(--text-accent);
+  color: var(--text-accent-alt);
   font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 0, 107, 0.3);
 }
 
 /* Blockquote */
@@ -206,10 +216,16 @@ blockquote p {
 /* Horizontal Rule */
 hr {
   border: none;
-  height: 2px;
-  background: linear-gradient(90deg, var(--border-light) 0%, transparent 50%, var(--border-light) 100%);
-  margin: 2.5rem 0;
-  opacity: 0.6;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--border-light) 0%, 
+    rgba(255, 0, 107, 0.4) 25%,
+    transparent 50%, 
+    rgba(255, 0, 107, 0.4) 75%,
+    var(--border-light) 100%);
+  margin: 3rem 0;
+  opacity: 0.7;
+  box-shadow: 0 0 10px rgba(255, 0, 107, 0.2);
 }
 
 /* Navigation */
@@ -231,8 +247,9 @@ nav::after {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--text-accent) 0%, transparent 100%);
-  opacity: 0.3;
+  background: linear-gradient(90deg, var(--text-accent) 0%, var(--text-accent-alt) 50%, transparent 100%);
+  opacity: 0.5;
+  box-shadow: 0 0 8px rgba(255, 0, 107, 0.3);
 }
 
 nav a {
@@ -261,28 +278,35 @@ nav a:hover {
 
 /* Footer */
 footer {
-  margin-top: 4rem;
-  padding: 2rem 0;
+  margin-top: 5rem;
+  padding: 2.5rem 0;
   border-top: 2px solid var(--border-light);
+  border-top-right: 3px solid var(--text-accent-alt);
   font-size: 0.8rem;
   color: var(--text-muted);
   text-align: center;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 136, 255, 0.03) 100%);
+  background: linear-gradient(180deg, 
+    rgba(0, 136, 255, 0.02) 0%, 
+    rgba(255, 0, 107, 0.02) 100%);
 }
 
 footer p {
-  margin: 0.3rem 0;
+  margin: 0.5rem 0;
   letter-spacing: 0.05em;
 }
 
 footer a {
   color: var(--text-secondary);
   border-color: var(--text-secondary);
+  transition: all 0.2s ease-out;
 }
 
 footer a:hover {
-  color: var(--text-accent);
-  text-shadow: 0 0 8px rgba(0, 136, 255, 0.5);
+  color: var(--text-accent-alt);
+  border-color: var(--text-accent-alt);
+  text-shadow: 
+    0 0 8px rgba(0, 136, 255, 0.5),
+    0 0 5px rgba(255, 0, 107, 0.4);
 }
 
 /* Responsive */
