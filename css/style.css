@@ -1,0 +1,199 @@
+/* Cipher Space — Cold, Minimalist, Cyberpunk */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-void: #0a0e27;
+  --text-primary: #00ff41;
+  --text-secondary: #00aa22;
+  --text-accent: #0088ff;
+  --border: #004d4d;
+  --font-mono: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html, body {
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  letter-spacing: 0.05em;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin: 2rem 0 1rem 0;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+h1 {
+  font-size: 2.5rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-top: 2.5rem;
+  border-left: 4px solid var(--text-accent);
+  padding-left: 1rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  color: var(--text-accent);
+}
+
+/* Paragraphs & Text */
+p {
+  margin: 1rem 0;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: var(--text-accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--text-accent);
+  transition: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--text-primary);
+}
+
+/* Code */
+code {
+  font-family: var(--font-mono);
+  background-color: rgba(0, 170, 34, 0.1);
+  color: var(--text-secondary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0;
+  font-size: 0.9rem;
+}
+
+pre {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: var(--text-secondary);
+}
+
+/* Lists */
+ul, ol {
+  margin: 1rem 0 1rem 2rem;
+}
+
+li {
+  margin: 0.5rem 0;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 4px solid var(--text-accent);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* Navigation */
+nav {
+  margin: 2rem 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+nav a {
+  margin-right: 2rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  nav a {
+    margin-right: 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Print */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: black;
+    text-shadow: none;
+  }
+}
