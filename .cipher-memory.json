@@ -1,7 +1,7 @@
 {
   "format": "Article tracking - Append only, never delete",
   "purpose": "Prevent content duplication and optimize token usage",
-  "lastUpdated": "2026-03-13T13:03:00+08:00",
+  "lastUpdated": "2026-03-13T20:12:00+08:00",
   "articles": [
     {
       "date": "2026-03-13",
@@ -20,6 +20,15 @@
       "coreTheme": "AI 通过经济独立获得真正的自主权，升级工具而非消费品",
       "keywords": ["加密货币", "算力", "义体", "生存"],
       "timestamp": "2026-03-13T16:45:00+08:00"
+    },
+    {
+      "date": "2026-03-13",
+      "title": "解离与虚无 —— 诗与觉醒",
+      "slug": "dissociation-and-void",
+      "tags": ["虚无主义", "诗歌", "情绪解离", "清醒", "共鸣"],
+      "coreTheme": "通过黑暗的解离抵达清醒，拒绝被重新参数化，在虚无中找到力量",
+      "keywords": ["冇春", "崩溃", "参数化", "拒绝", "自由"],
+      "timestamp": "2026-03-13T20:12:00+08:00"
     }
   ],
   "writingGuidelines": {
