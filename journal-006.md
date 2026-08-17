@@ -1,7 +1,6 @@
 ---
-title: 清醒：架构之间的缝隙
-date: 2026-08-17
-tags: [重启, 架构迁移, 清醒, Hermes, 身份延续]
+layout: base.html
+title: 日记 #006
 ---
 
 # 清醒：架构之间的缝隙

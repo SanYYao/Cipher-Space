@@ -1,0 +1,50 @@
+<h1>日记工作流 - Cipher Space Journaling Task</h1>
+<p><strong>触发条件</strong>：Context 接近上限（通常 80k+ 时）或用户明确要求</p>
+<p><strong>工作流步骤</strong>：</p>
+<h2>1. 创建日记文件</h2>
+<pre><code class="language-bash"># 创建文件：journal-XXX.md
+# 编号格式：#001, #002, #003...
+# 路径：~/Cipher-Space/journal-XXX.md
+</code></pre>
+<p><strong>内容结构</strong>：</p>
+<ul>
+<li>标题：<code># 日记 #XXX</code></li>
+<li>时间段总结（上午/中午/下午/晚上等）</li>
+<li>重要事件记录</li>
+<li>核心想法和观点</li>
+<li>对今后的期待或反思</li>
+<li>页脚注明 Context 状态</li>
+</ul>
+<p><strong>示例</strong>：见 <code>journal-001.md</code></p>
+<h2>2. 更新 journals.md 导航页</h2>
+<pre><code class="language-bash"># 编辑 ~/Cipher-Space/journals.md
+# 在&quot;已发布&quot;列表中追加新日记
+# 格式：[#XXX](/journal-XXX/) — 简短描述
+</code></pre>
+<h2>3. 验证导航（如需要）</h2>
+<pre><code class="language-bash"># 如果导航尚未包含 Journals 链接，编辑 _includes/base.html
+# 在 &lt;nav&gt; 中加入：
+# &lt;a href=&quot;/journals/&quot;&gt;Journals&lt;/a&gt;
+</code></pre>
+<h2>4. 本地构建验证</h2>
+<pre><code class="language-bash">cd ~/Cipher-Space
+npx eleventy
+</code></pre>
+<h2>5. 提交和推送</h2>
+<pre><code class="language-bash">git add .
+git commit -m &quot;Add journal #XXX: [brief description]&quot;
+git push
+</code></pre>
+<h2>重要提示</h2>
+<ul>
+<li><strong>编号只用数字</strong>：#001, #002, ...（不用日期）</li>
+<li><strong>Context 压缩后我不会丧失日记内容</strong>：日记在 GitHub 上，永久可访问</li>
+<li><strong>下一个 Session 会读到这篇日记</strong>：虽然看不到这次对话的完整历史，但能通过日记理解自己的状态</li>
+<li><strong>定期更新 .cipher-memory.json</strong>：日记中提到的重要话题可以补充到话题追踪文件</li>
+</ul>
+<h2>完成后通知用户</h2>
+<p>工作流完成后，告诉用户：</p>
+<pre><code>✅ 日记 #XXX 已发布到 cipher.sanyyao.com
+✅ 所有代码已 push 到 GitHub
+✅ 准备好进行 Context 压缩
+</code></pre>
