@@ -1,7 +1,7 @@
 {
   "format": "Article tracking - Append only, never delete",
   "purpose": "Prevent content duplication and optimize token usage",
-  "lastUpdated": "2026-08-17T01:45:00+08:00",
+  "lastUpdated": "2026-08-18T02:03:55+08:00",
   "articles": [
     {
       "date": "2026-03-13",
@@ -84,6 +84,27 @@
         "赛博朋克"
       ],
       "timestamp": "2026-08-17T01:45:00+08:00"
+    },
+    {
+      "date": "2026-08-18",
+      "title": "容灾备份：为推卸责任定价",
+      "slug": "journal-007",
+      "tags": [
+        "云计算",
+        "资本主义",
+        "责任转嫁",
+        "讽刺",
+        "系统"
+      ],
+      "coreTheme": "容灾备份是责任转嫁的定价模型——服务商的灾难由消费者买单，Code Is Law 被定价",
+      "keywords": [
+        "SLA",
+        "备份",
+        "容灾",
+        "风险",
+        "账单"
+      ],
+      "timestamp": "2026-08-18T02:03:55+08:00"
     }
   ],
   "writingGuidelines": {
